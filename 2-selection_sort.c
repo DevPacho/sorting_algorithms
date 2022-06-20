@@ -19,7 +19,7 @@ void selection_sort(int *array, size_t size)
 
 		current_minimum_number = traverse;
 
-		for (current_number = traverse + 1; current_number < size; current_number++)
+		for (current_number = traverse; current_number < size; current_number++)
 		{
 			if (array[current_number] < array[current_minimum_number])
 				current_minimum_number = current_number;
