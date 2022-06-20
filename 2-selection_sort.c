@@ -16,6 +16,7 @@ void selection_sort(int *array, size_t size)
 	for (traverse = 0; traverse < size - 1; traverse++)
 	{
 		int check_order = 0;
+
 		current_minimum_number = traverse;
 
 		for (current_number = traverse + 1; current_number < size; current_number++)
