@@ -1,66 +1,55 @@
 #include "sort.h"
 
 /**
-* sorted_insert - function to insert a new node in sorted way.
-* @list: list to sort.
-* @new_node: node to insert in sorted way.
+* tswap - function that swaps nodes of a doubly linked list.
+* @list: doubly linked list.
+* @current: current node guide.
+* @previous: previous node guide.
 */
 
-void sorted_insert(listint_t **list, listint_t *new_node)
+void tswap(listint_t **list, listint_t *current_node, listint_t *previous_node)
 {
-	listint_t *current_node;
-
-	if (*list == NULL)
-		*list = new_node;
-
-	else if ((*list)->n >= new_node->n)
-	{
-		new_node->next = *list;
-		new_node->next->prev = new_node;
-		*list = new_node;
-	}
-
+	if (previous_node->prev)
+		previous_node->prev->next = current_node;
 	else
-	{
-		current_node = *list;
+		*list = current_node;
 
-		while (current_node->next != NULL && current_node->next->n < new_node->n)
-			current_node = current_node->next;
+	if (current_node->next)
+		current_node->next->prev = previous_node;
 
-		new_node->next = current_node->next;
-
-		if (current_node->next != NULL)
-			new_node->next->prev = new_node;
-
-		current_node->next = new_node;
-		new_node->prev = current_node;
-	}
+	current_node->prev = previous_node->prev;
+	current_node->next = previous_node;
 }
 
 /**
-* insertion_sort_list - function that sorts a doubly linked list
-* of integers in ascending order.
-* @list: list to sort.
+* insertion_sort_list - function that sorts a doubly linked list of integers
+* in ascending order.
+* @list: doubly linked list to sort.
 */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted = NULL, *current_node = NULL, *next_iteration = NULL;
+	listint_t *current_node = NULL, *next_to_current = NULL, *previous_to_current = NULL;
 
 	if (!list || !*list)
 		return;
 
-	current_node = *list;
+	current_node = (*list)->next;
 
-	while (current_node != NULL)
+	while (current_node)
 	{
-		next_iteration = current_node->next;
+		previous_to_current = current_node->prev;
+		next_to_current = current_node->next;
 
-		current_node->prev = current_node->next = NULL;
-		sorted_insert(&sorted, current_node);
-		current_node = next_iteration;
+		while (previous_to_current && current_node->n < previous_to_current->n)
+		{
+			previous_to_current->next = current_node->next;
+			tswap(list, current_node, previous_to_current);
+			previous_to_current->prev = current_node;
+			previous_to_current = current_node->prev;
 
-		print_list(*list);
+			print_list(*list);
+		}
+		current_node = next_to_current;
 	}
-	*list = sorted;
 }
