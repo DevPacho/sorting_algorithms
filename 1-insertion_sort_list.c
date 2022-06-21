@@ -17,8 +17,8 @@ void tswap(listint_t **list, listint_t *current_node, listint_t *previous_node)
 	if (current_node->next)
 		current_node->next->prev = previous_node;
 
-	current_node->prev = previous_node->prev;
 	current_node->next = previous_node;
+	current_node->prev = previous_node->prev;
 }
 
 /**
@@ -35,7 +35,7 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !*list)
 		return;
 
-	current_node = (*list)->next;
+	current_node = (*list);
 
 	while (current_node)
 	{
