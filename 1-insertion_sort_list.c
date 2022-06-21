@@ -3,8 +3,8 @@
 /**
 * tswap - function that swaps nodes of a doubly linked list.
 * @list: doubly linked list.
-* @current: current node guide.
-* @previous: previous node guide.
+* @current_node: current node guide.
+* @previous_node: previous node guide.
 */
 
 void tswap(listint_t **list, listint_t *current_node, listint_t *previous_node)
@@ -29,7 +29,8 @@ void tswap(listint_t **list, listint_t *current_node, listint_t *previous_node)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current_node = NULL, *next_to_current = NULL, *previous_to_current = NULL;
+	listint_t *current_node = NULL;
+	listint_t *next_to_current = NULL, *previous_to_current = NULL;
 
 	if (!list || !*list)
 		return;
