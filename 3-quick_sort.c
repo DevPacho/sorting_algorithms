@@ -21,7 +21,8 @@ classify(array, 0, (int)(size - 1), size);
 }
 
 /**
-* classify - recursively sorts the contents of an array, by using the quick sort algorithm
+* classify - recursively sorts the contents of an array,
+* by using the quick sort algorithm
 * @array: Array containing integers
 * @first_pos: Index of the first element of the array
 * @last_pos: Index of the last element of the array
