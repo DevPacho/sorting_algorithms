@@ -45,7 +45,7 @@ classify(array, pivot_ini + 1, last_pos, size);
 * The elements of the matrix that are between the first and last index
 * from the location of the pivot
 * elements smaller than the pivot will be in the left group
-* the elements greater than the pivot will be in the right hand group 
+* the elements greater than the pivot will be in the right hand group
 * the last element is always taken as the pivot.
 *
 * @array: The array
